@@ -4,6 +4,6 @@ if __name__ == "__main__":
     tot = 0
     i = 0
     for arg in sys.argv:
-        tot += int(sys.argv[i])
+        tot += int(sys.argv[i + 1])
         i += 1
     print("{:d}".format(tot))
