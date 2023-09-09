@@ -1,28 +1,27 @@
 #include "lists.h"
 
 /**
- * reverse - Reverses singly linked list
- * @list: list to reverse
- * Return: Reversed list
+ * reverse_list - reverse linked list
+ * @head: head of linked list
+ * Return: reversed list;
  */
-
-listint_s *reverse(listint_s *list)
+listint_t *reverse_list(listint_t *head)
 {
-	listint_s *new_list = NULL;
+	listint_t *tmp = NULL;
 
-	if (list == NULL)
-		return NULL;
+	if (head == NULL)
+		return (NULL);
 
-	if (!list->next)
+	if (!head->next)
 	{
-		add_nodeint_end(&new_list, list->n);
-		return (new_list);
+		add_nodeint_end(&tmp, head->n);
+		return (tmp);
 	}
 
-	new_list = reverse_list(list->next);
-	add_nodeint_end(&new_list, list->n);
+	tmp = reverse_list(head->next);
+	add_nodeint_end(&tmp, head->n);
 
-	return (new_list);
+	return (tmp);
 }
 
 /**
@@ -33,26 +32,26 @@ listint_s *reverse(listint_s *list)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp = NULL, *reversed = NULL, *my_list = *head;
+	listint_t *temp = NULL, *reversed = NULL, *my_list = *head;
 
 	if (*head == NULL)
 		return (1);
-
+	/*reverse a copy of list*/
 	reversed = reverse_list(my_list);
-	tmp = reversed;
+	temp = reversed;
 
-
+	/*compare reversed list and list: if same palindrome*/
 	while (my_list)
 	{
 		if (my_list->n != reversed->n)
 		{
-			free_listint(tmp);
+			free_listint(temp);
 			return (0);
 		}
 		my_list = my_list->next;
 		reversed = reversed->next;
 	}
 
-	free_listint(tmp);
+	free_listint(temp);
 	return (1);
 }
