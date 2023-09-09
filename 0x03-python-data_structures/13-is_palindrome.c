@@ -2,11 +2,11 @@
 
 /**
  * reverse - Reverses singly linked list
- * @list : list to reverse
- * Return : Reversed list
+ * @list: list to reverse
+ * Return: Reversed list
  */
 
-listint_s reverse(listint_s *list)
+listint_s *reverse(listint_s *list)
 {
 	listint_s *new_list = NULL;
 
