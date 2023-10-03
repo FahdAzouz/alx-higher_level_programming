@@ -3,6 +3,7 @@
     5-text_indentation Module
 """
 
+
 def text_indentation(text):
     """
         Prints a text with 2 new lines after each of this characters

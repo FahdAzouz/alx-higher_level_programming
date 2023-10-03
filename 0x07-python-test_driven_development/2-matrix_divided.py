@@ -32,7 +32,7 @@ def matrix_divided(matrix, div):
 
         if prev_len != 0 and len(block) != prev_len:
             raise TypeError("Each row of the matrix must have the same size")
-        
+
         prev_len = len(block)
 
     if type(div) is not float and type(div) is not int:
