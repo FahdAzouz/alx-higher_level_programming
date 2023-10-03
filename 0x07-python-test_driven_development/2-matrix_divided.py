@@ -26,14 +26,16 @@ def matrix_divided(matrix, div):
             raise TypeError(error_mess)
 
         for element in block:
-            if type(element) is not int and type(element) is not float:
-                raise TypeError(error_mess)
+            if type(element) is not int:
+                if type(element) is not float:
+                    raise TypeError(error_mess)
 
-        if len(block) != prev_len and prev_len != 0:
+        if prev_len != 0 and len(block) != prev_len:
             raise TypeError("Each row of the matrix must have the same size")
+        
         prev_len = len(block)
 
-    if type(div) is not int and type(div) is not float:
+    if type(div) is not float and type(div) is not int:
         raise TypeError("div must be a number")
 
     if div == 0:
