@@ -3,10 +3,9 @@
     4-print_square Module
 """
 
-
 def print_square(size):
     """
-        Prints a square with the character '#'
+        Prints a square with characters '#'
 
         Args:
             size: size length of the square
@@ -17,7 +16,7 @@ def print_square(size):
     if size < 0:
         raise ValueError("size must be >= 0")
 
-    for i in range(size):
-        for j in range(size):
+    for j in range(size):
+        for k in range(size):
             print("#", end='')
         print()
