@@ -8,6 +8,7 @@ queen must be placed on the chessboard.
 """
 import sys
 
+
 def xout(board, row, col):
     """X out spots on a chessboard.
     All spots where non-attacking queens can no
@@ -65,12 +66,14 @@ def board_deepcopy(board):
         return list(map(board_deepcopy, board))
     return (board)
 
+
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
     [board.append([]) for i in range(n)]
     [row.append(' ') for i in range(n) for row in board]
     return (board)
+
 
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
@@ -81,7 +84,6 @@ def get_solution(board):
                 solution.append([r, c])
                 break
     return (solution)
-
 
 
 def recursive_solve(board, row, queens, solutions):
