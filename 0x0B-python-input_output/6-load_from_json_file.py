@@ -6,11 +6,11 @@ import json
 
 
 def load_from_json_file(filename):
-     """
+    """
     load_from_json_file - loads an object from JSON file.
     Args:
         filename: name of the file
     """
     with open(filename, "r") as f:
-        obj = json.load(f)
-        return obj
+        my_obj = json.load(f)
+        return my_obj
