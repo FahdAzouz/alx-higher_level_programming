@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-base.py
+base module
 """
 import json
 import os
@@ -20,7 +20,7 @@ class Base:
         Args:
             id: object id
         """
-        if id not None:
+        if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
@@ -28,20 +28,18 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-        returns the JSON string representation of list_dictionaries
+        """returns the JSON string representation of list_dictionaries.
         Args:
             list_dictionaries: is a list of dictionaries
         """
-        if lis_dictionaries is None or list_dictionaries == []:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """
-        writes the JSON string representation of list_objs to a file.
+        """writes the JSON string representation of list_objs to a file.
         Args:
             list_objs: is a list of instances who inherits of Base
         """
@@ -50,7 +48,7 @@ class Base:
             lst = "[]"
         else:
             lst = cls.to_json_string([o.to_dictionary() for o in list_objs])
-        with open(filename, "w") as f:
+        with open(filename, 'w') as f:
             f.write(lst)
 
         return lst
@@ -72,7 +70,7 @@ class Base:
         Args:
             dictionary: can be thought of as a double pointer to a dictionary
         """
-        if cls.__name__ == "Rectangel":
+        if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         else:
             dummy = cls(1)
@@ -82,15 +80,11 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """
-        returns a list of instances
-        Args:
-            cls - file
-        """
+        """returns a list of instances."""
         filename = cls.__name__ + ".json"
         lst = []
         if os.path.exists(filename):
-            with open(filename, "r") as f:
+            with open(filename, 'r') as f:
                 s = f.read()
                 list_dicts = cls.from_json_string(s)
                 for d in list_dicts:
@@ -106,7 +100,7 @@ class Base:
             - list_objs: list of instances
         """
 
-        if (type(list_objs) is not list and
+        if (type(list_objs) != list and
            list_objs is not None or
            not all(isinstance(x, cls) for x in list_objs)):
             raise TypeError("list_objs must be a list of instances")
