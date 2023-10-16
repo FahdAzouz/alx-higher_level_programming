@@ -4,6 +4,7 @@ rectangle module
 """
 from module.base import Base
 
+
 class Rectangle(Base):
     """
     Rectangle Implementation
@@ -80,7 +81,7 @@ class Rectangle(Base):
         """ y setter """
         self.check('y', y, False)
         self.__y = y
-    
+
     def area(self):
         """
         area
@@ -101,9 +102,16 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        """
+        override str function
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
+        """
+        update values
+        """
         lst = (self.id, self.width, self.height, self.x, self.y)
         if args:
             self.id, self.width, self.height, self.x, self.y = \
@@ -112,3 +120,9 @@ class Rectangle(Base):
             for (key, value) in kwargs.items():
                 setattr(self, key, value)
 
+    def to_dictionary(self):
+        """
+        returns the dictionary representation of a Rectangle
+        """
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}
