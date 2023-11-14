@@ -11,7 +11,7 @@ class Square(Rectangle):
     """
     def __init__(self, size, x=0, y=0, id=None):
         """
-        init - initializer
+        init - initilizer
         Args:
             size: size of the square
             x: x position of the square
@@ -52,6 +52,6 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """
-        returns the dictionary representation of a Square
+        that returns the dictionary representation of a Square.
         """
         return {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}

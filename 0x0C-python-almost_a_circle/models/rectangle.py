@@ -1,13 +1,13 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """
 rectangle module
 """
-from module.base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
     """
-    Rectangle Implementation
+    Rectangle implementation
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -25,18 +25,25 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        """
+        overriden __str__ method
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.x, self.y, self.width, self.height)
+
     def check(self, key, value, less_eq=True):
         """
         checks for value and type error
         """
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(value))
+            raise TypeError("{} must be an integer".format(key))
         if less_eq:
             if value <= 0:
-                raise ValueError("{} must be > 0".format(value))
+                raise ValueError("{} must be > 0".format(key))
         else:
             if value < 0:
-                raise ValueError("{} must be >= 0".format(value))
+                raise ValueError("{} must be >= 0".format(key))
 
     @property
     def width(self):
@@ -83,9 +90,7 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
-        """
-        area
-        """
+        """ area """
         return self.__width * self.__height
 
     def display(self):
@@ -94,23 +99,16 @@ class Rectangle(Base):
         """
         for y in range(self.y):
             print()
-        for i in range(self.__height):
+        for column in range(self.height):
             for x in range(self.x):
                 print(' ', end='')
-            for j in range(self.__width):
-                print("#", end="")
+            for row in range(self.width):
+                print("#", end='')
             print()
-
-    def __str__(self):
-        """
-        override str function
-        """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(
-                self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """
-        update values
+        assigns an argument to each attribute
         """
         lst = (self.id, self.width, self.height, self.x, self.y)
         if args:
@@ -122,7 +120,7 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """
-        returns the dictionary representation of a Rectangle
+        returns the dictionary representation of a Rectangle.
         """
         return {'x': self.x, 'y': self.y, 'id': self.id,
                 'height': self.height, 'width': self.width}
