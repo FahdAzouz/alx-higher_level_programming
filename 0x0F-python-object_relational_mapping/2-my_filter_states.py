@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+''' Search state in a database '''                
 import MySQLdb
 import sys
 

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+''' Foolproofing script from MySQL injections '''
 import MySQLdb
 import sys
 

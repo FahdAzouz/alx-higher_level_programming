@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Script that outputs the state """
 import MySQLdb
 import sys
 
