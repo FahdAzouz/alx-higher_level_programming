@@ -18,7 +18,7 @@ def filter_states(username, password, db_name):
 
     # Display results
     for state in states:
-        print("({}, '{}')".format(state.id, state.name))
+        print(state)
 
     # Close the cursor and connection
     cursor.close()
