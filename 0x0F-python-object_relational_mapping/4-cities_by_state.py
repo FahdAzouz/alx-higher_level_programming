@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" list all states from the database """
+""" list all cities with their states from the database hbtn_0e_0_usa """
 import MySQLdb
 import sys
 
@@ -11,11 +11,11 @@ def filter_states(username, password, db_name):
     cursor = db.cursor()
 
     # Execute the query to get states starting with 'N'
-    query = "SELECT * FROM states ORDER BY states.id ASC"
+    query = "SELECT cities.id, cities.name, state.name FROM cities INNER JOIN states ON states.id=cities.state_id ORDERED by cities.id ASC"
     cursor.execute(query)
 
     # Fetch all the rows
-    states = cursor.fetchall()
+    states = cursor.fetchall()4-cities_by_state.py
 
     # Display results
     for state in states:
@@ -32,4 +32,3 @@ if __name__ == "__main__":
 
     username, password, db_name = sys.argv[1:4]
     filter_states(username, password, db_name)
-
