@@ -1,35 +1,17 @@
 #!/usr/bin/python3
-''' Search state in a database '''                
+"""  lists all states from the database hbtn_0e_0_usa """
 import MySQLdb
 import sys
 
-def filter_states(username, password, db_name, stte_name):
-    # Connect to MySQL server
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
-
-    # Create a cursor object to execute queries
-    cursor = db.cursor()
-
-    # Execute the query to get states starting with 'N'
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}'".format(stte_name)
-    cursor.execute(query)
-
-    # Fetch all the rows
-    states = cursor.fetchall()
-
-    # Display results
-    for state in states:
-        print(state)
-
-    # Close the cursor and connection
-    cursor.close()
-    db.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: {} <username> <password> <db_name>".format(sys.argv[0]))
-        sys.exit(1)
-
-    username, password, db_name, state_name = sys.argv[1:5]
-    filter_states(username, password, db_name, state_name)
-
+    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+                .format(sys.argv[4]))
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+    db.close()
