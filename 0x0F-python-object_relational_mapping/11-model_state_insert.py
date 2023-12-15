@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" prints the State object with the name passed as argument from the database
+""" prints the State object created from the database
 """
 import sys
 from model_state import Base, State
@@ -15,6 +15,6 @@ if __name__ == "__main__":
     session = Session()
     new_state = State(name='Louisiana')
     session.add(new_state)
-    louis = session.query(State).filter_by(name == "Louisiana").first()
+    louis = session.query(State).filter_by(name='Louisiana').first()
     print(louis.id)
     session.commit()
