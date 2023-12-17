@@ -3,9 +3,11 @@
 import MySQLdb
 import sys
 
+
 def filter_states(username, password, db_name):
     # Connect to MySQL server
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
+    db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                         passwd=password, db=db_name)
 
     # Create a cursor object to execute queries
     cursor = db.cursor()
@@ -25,6 +27,7 @@ def filter_states(username, password, db_name):
     cursor.close()
     db.close()
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print("Usage: {} <username> <password> <db_name>".format(sys.argv[0]))
@@ -32,4 +35,3 @@ if __name__ == "__main__":
 
     username, password, db_name = sys.argv[1:4]
     filter_states(username, password, db_name)
-
