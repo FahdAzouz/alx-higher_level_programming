@@ -1,4 +1,4 @@
-#!/user/bin/python
+#!/user/bin/python3
 """FInds a peak in a list of sorted integers"""
 
 
