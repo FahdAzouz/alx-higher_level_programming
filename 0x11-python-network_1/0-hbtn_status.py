@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """Fetches https://intranet.hbtn.io/status"""
 
-from urllib import request
-
-url = 'https://alx-intranet.hbtn.io/status'
-
 if __name__ == "__main__":
-    with request.Request(url) as response:
+    from urllib import request
+    url = 'https://alx-intranet.hbtn.io/status'
+    with request.urlopen(url) as response:
         html = response.read()
         print("Body response:")
         print("\t- type: {}".format(type(html)))
